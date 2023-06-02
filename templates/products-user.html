@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Motor Shop - User</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
 <!--[if IE 6]>
 <link rel="stylesheet" type="text/css" href="iecss.css" />
 <![endif]-->
@@ -23,11 +23,11 @@
   <div id="main_content">
     <div id="menu_tab">
       <ul class="menu">
-        <li><a href="#" class="nav"> Products </a></li>
+        <li><a href="{{url_for('home')}}" class="nav"> Products </a></li>
         <li class="divider"></li>
-        <li><a href="#" class="nav"> About us </a></li>
+        <li><a href="{{url_for('about_us')}}" class="nav"> About us </a></li>
         <li class="divider"></li>
-        <li><a href="#" class="nav"> Sign in </a></li>
+        <li><a href="{{url_for('sign_in')}}" class="nav"> Sign in </a></li>
       </ul>
     </div>
     <!-- end of menu tab -->
@@ -127,7 +127,7 @@
           <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
         <div class="cart_icon"><a href="#"><img src="images/shoppingcart.png" alt="" width="35" height="35" border="0" /></a></div>
       </div>
-      <div class="title_box">What’s new</div>
+      <div class="title_box">What's new</div>
       <div class="border_box">
         <div class="product_title"><a href="#">Kavir CDI 200</a></div>
         <div class="product_img"><a href="#"><img src="images/p2.jpg" alt="" border="0" style="width: 60%;" /></a></div>
