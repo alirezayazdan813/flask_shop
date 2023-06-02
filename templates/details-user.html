@@ -54,11 +54,11 @@ close();
   <div id="main_content">
     <div id="menu_tab">
       <ul class="menu">
-        <li><a href="#" class="nav"> Products </a></li>
+        <li><a href="{{url_for('home')}}" class="nav"> Products </a></li>
         <li class="divider"></li>
-        <li><a href="#" class="nav"> About us </a></li>
+        <li><a href="{{url_for('about_us')}}" class="nav"> About us </a></li>
         <li class="divider"></li>
-        <li><a href="#" class="nav"> Sign in </a></li>
+        <li><a href="{{url_for('sign_in')}}" class="nav"> Sign in </a></li>
       </ul>
     </div>
     <!-- end of menu tab -->
@@ -71,19 +71,19 @@ close();
     </div>
     <!-- end of left content -->
     <div class="center_content">
-      <div class="center_title_bar">Makita 156 MX-VL</div>
+      <div class="center_title_bar">{{product['name']}}</div>
       <div class="prod_box_big">
         <div class="center_prod_box_big">
           <div class="product_img_big"> <a href="javascript:popImage('images/big_pic.jpg','Some Title')" title="header=[Zoom] body=[&nbsp;] fade=[on]"><img src="images/p3.jpg" alt="" border="0" /></a>
-            <div class="thumbs"> <a href="#" title="header=[Thumb1] body=[&nbsp;] fade=[on]"><img src="images/thumb1.jpg" alt="" border="0" /></a> <a href="#" title="header=[Thumb2] body=[&nbsp;] fade=[on]"><img src="images/thumb2.jpg" alt="" border="0" /></a> <a href="#" title="header=[Thumb3] body=[&nbsp;] fade=[on]"><img src="images/thumb1.jpg" alt="" border="0" /></a> </div>
+            <div class="product_img"><a href="#"><img src={{product['img_link']}} alt="" border="0" style="height: 100%" /></a></div>
           </div>
           <div class="details_big_box">
-            <div class="product_title_big">Makita 156 MX-VL</div>
+            <div class="product_title_big">{{product['name']}}</div>
             <div class="specifications"> Available: <span class="blue">In stock</span><br />
               Warranties: <span class="blue">24 months</span><br />
               Transport: <span class="blue"> delivery services company</span><br />
               Include :<span class="blue"> TVA</span><br />
-              Description :<span class="blue"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span><br />
+              Description :<span class="blue">{{product['details']}} .</span><br />
             </div>
             <div class="prod_price_big"><span class="reduce">350$</span> <span class="price">270$</span></div>
             <a href="#" class="prod_buy">add to cart</a></div>

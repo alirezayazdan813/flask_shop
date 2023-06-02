@@ -15,10 +15,10 @@
     <div class="top_right">
       <div class="languages">
         <div class="lang_text">Languages:</div>
-        <a href="#" class="lang"><img src="images/en.gif" alt="" border="0" /></a> <a href="#" class="lang"><img src="images/de.gif" alt="" border="0" /></a> </div>
+        <a href="#" class="lang"><img src="{{url_for('static', filename='images/en.gif')}}" alt="" border="0" /></a> <a href="#" class="lang"><img src="{{url_for('static', filename='images/de.gif')}}" alt="" border="0" /></a> </div>
       <div class="big_banner"> <a href="#"><img src="images/banner728.jpg" alt="" border="0" /></a> </div>
     </div>
-    <div id="logo"> <a href="#"><img src="images/logo.png" alt="" border="0" height="85" /></a> </div>
+    <div id="logo"> <a href="#"><img src="{{url_for('static', filename='images/logo.png')}}" alt="" border="0" height="85" /></a> </div>
   </div>
   <div id="main_content">
     <div id="menu_tab">
@@ -41,79 +41,16 @@
     <!-- end of left content -->
     <div class="center_content">
       <div class="center_title_bar">Latest Products</div>
+      {%for product in products%}
       <div class="prod_box">
         <div class="center_prod_box">
-          <div class="product_title"><a href="#">Makita 156 MX-VL</a></div>
-          <div class="product_img"><a href="#"><img src="images/p1.jpg" alt="" border="0" style="height: 100%" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
+          <div class="product_title"><a href="#">{{product['name']}}</a></div>
+          <div class="product_img"><a href="#"><img src={{product['img_link']}} alt="" border="0" style="height: 100%" /></a></div>
+          <div class="prod_price"><span class="reduce">350$</span> <span class="price">{{product['price']}}$</span></div>
         </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
+        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <form action="{{ url_for('show_detail') }}" method="post"><input type="hidden" value={{product['id']}} name="product id" ><input type="submit"  value="details"></form> </div>
       </div>
-      <div class="prod_box">
-        <div class="center_prod_box">
-          <div class="product_title"><a href="#">Kavir CDI 200</a></div>
-          <div class="product_img"><a href="#"><img src="images/p2.jpg" alt="" border="0" style="height: 100%" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="center_prod_box">
-          <div class="product_title"><a href="#">Lotus PP4</a></div>
-          <div class="product_img"><a href="#"><img src="images/p4.jpg" alt="" border="0" style="height: 100%"/></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="center_prod_box">
-          <div class="product_title"><a href="#">Makita 156 MX-VL</a></div>
-          <div class="product_img"><a href="#"><img src="images/p3.jpg" alt="" border="0" style="height: 100%" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="center_prod_box">
-          <div class="product_title"><a href="#">Bosch XC</a></div>
-          <div class="product_img"><a href="#"><img src="images/p5.jpg" alt="" border="0" style="height: 100%" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="center_prod_box">
-          <div class="product_title"><a href="#">Lotus PP4</a></div>
-          <div class="product_img"><a href="#"><img src="images/p6.jpg" alt="" border="0" style="height: 100%" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
-      </div>
-      <div class="center_title_bar">Recomended Products</div>
-      <div class="prod_box">
-        <div class="center_prod_box">
-          <div class="product_title"><a href="#">Makita 156 MX-VL</a></div>
-          <div class="product_img"><a href="#"><img src="images/p7.jpg" alt="" border="0" style="height: 100%" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="center_prod_box">
-          <div class="product_title"><a href="#">Bosch XC</a></div>
-          <div class="product_img"><a href="#"><img src="images/p1.jpg" alt="" border="0" style="height: 100%"/></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="center_prod_box">
-          <div class="product_title"><a href="#">Lotus PP4</a></div>
-          <div class="product_img"><a href="#"><img src="images/p3.jpg" alt="" border="0" style="height: 100%"/></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <a href="#" class="prod_details">Details</a> </div>
-      </div>
+      {%endfor%}
     </div>
     <!-- end of center content -->
     <div class="right_content">
@@ -125,22 +62,22 @@
         <div class="title_box">Shopping cart</div>
         <div class="cart_details"> 3 items <br />
           <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
-        <div class="cart_icon"><a href="#"><img src="images/shoppingcart.png" alt="" width="35" height="35" border="0" /></a></div>
+        <div class="cart_icon"><a href="#"><img src="{{url_for('static', filename='images/shoppingcart.png')}}" alt="" width="35" height="35" border="0" /></a></div>
       </div>
       <div class="title_box">What's new</div>
       <div class="border_box">
-        <div class="product_title"><a href="#">Kavir CDI 200</a></div>
-        <div class="product_img"><a href="#"><img src="images/p2.jpg" alt="" border="0" style="width: 60%;" /></a></div>
-        <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
+        <div class="product_title"><a href="#">{{products[-1]['name']}}</a></div>
+        <div class="product_img"><a href="#"><img src={{products[-1]['img_link']}} alt="" border="0" style="width: 60%;" /></a></div>
+        <div class="prod_price"><span class="reduce">350$</span> <span class="price">{{products[-1]['price']}}$</span></div>
       </div>
     </div>
     <!-- end of right content -->
   </div>
   <!-- end of main content -->
   <div class="footer">
-    <div class="left_footer"> <img src="images/footer_logo.png" alt="" height="100%" /> </div>
+    <div class="left_footer"> <img src="{{url_for('static', filename='images/footer_logo.png')}}" alt="" height="100%" /> </div>
     <div class="center_footer"> www.MotorShop.ir. All Rights Reserved 2023<br />
-      <a href="http://csscreme.com"><img src="images/csscreme.jpg" alt="csscreme" title="csscreme" border="0" /></a><br />
+      <a href="http://csscreme.com"><img src="{{url_for('static', filename='images/csscreme.jpg')}}" alt="csscreme" title="csscreme" border="0" /></a><br />
       <img src="images/payment.gif" alt="" /> </div>
     <div class="right_footer"> <a href="#">home</a> <a href="#">about</a> <a href="#">contact us</a> </div>
   </div>

@@ -76,6 +76,7 @@ close();
       <div class="prod_box_big">
         <div class="center_prod_box_big">
           <div class="contact_form">
+            <form>
             <div class="form_row">
               <label class="contact"><strong>Name:</strong></label>
               <input type="text" class="contact_input" required placeholder="please enter product name" name="Name" />
@@ -89,10 +90,13 @@ close();
               <input type="text" class="contact_input" required placeholder="please enter image URL" name="Picture_link" />
             </div>
             <div class="form_row">
-              <label class="contact"><strong>Brand:</strong></label>
-              <input type="text" class="contact_input" required placeholder="please enter product brand" name="Brand" />
+              <label class="contact"><strong>Description file:</strong></label>
+              <input type="file" class="contact_input" name="desc_text" accept=".txt" />
+              
+            
           </div>  
             <div class="form_row"> <a href="#" class="prod_details">Add product</a> </div>
+          </form>
           </div>
         </div>
       </div>

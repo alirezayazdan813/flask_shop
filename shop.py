@@ -3,6 +3,24 @@ from flask import Flask,request,render_template
 
 app=Flask(__name__)
 
+products=[{
+ 'id':'1',
+ 'name':'Kavir CDI 200',
+ 'img_link': 'https://kavirmotor.com/wp-content/uploads/2022/08/CDI-200.jpg',  
+ 'price':'150',
+ 'details':'dkjjdj jvqejop jojojjodwdq jd2dojwdjwoqd'
+
+ },
+ {
+  'id':'2',
+  'name':'Kavir 125',
+  'img_link':'https://images.khabaronline.ir/images/2014/11/14-11-30-11555motor.jpg',
+  'price':'100',
+   'details':'dkjjdjxxxxxxxxxxxxxxxxxxxwdq jd2dojwdjwoqd'
+
+  }
+]
+
 users={
        'pourya':'p1382',
        'erfan':'e1381',
@@ -12,9 +30,9 @@ status=0
 @app.route("/")
 def home():       
     if status==0:
-        return render_template('products-user.html')
+        return render_template('products-user.html' , products=products)
     else:
-        return render_template('products-admin.html')
+        return render_template('products-admin.html' , products=products)
 
 @app.route('/about us')
 def about_us():
@@ -46,7 +64,11 @@ def log_out():
     global status
     status=0
     return render_template('logout.html', admin=user)
-
+@app.route('/detail', methods=['POST'])
+def show_detail():
+    product_id=request.form['product id']
+    product=products[int(product_id)-1]
+    return render_template('details-user.html' , product=product)
 
 app.run()
 
