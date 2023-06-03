@@ -48,7 +48,11 @@
           <div class="product_img"><a href="#"><img src={{product['img_link']}} alt="" border="0" style="height: 100%" /></a></div>
           <div class="prod_price"><span class="reduce">350$</span> <span class="price">{{product['price']}}$</span></div>
         </div>
-        <div class="prod_details_tab"> <a href="#" class="prod_buy">Add to Cart</a> <form action="{{ url_for('show_detail') }}" method="post"><input type="hidden" value={{product['id']}} name="product id" ><input type="submit"  value="details"></form> </div>
+        <div class="prod_details_tab"><form action="{{ url_for('show_detail') }}" method="post">
+          <input type="hidden" value={{product['id']}} name="product id" >
+          <input type="submit"  value="Details" style="width: fit-content; border-radius:5px; text-align: center; border-width:0.5px ; float:left; margin: 0px 8px ;">
+          <input type="submit"  value="Add to Cart" style="width: fit-content; border-radius:5px; text-align: center; border-width:0.5px; float: right; margin:0px 8px; color: green;">
+        </form> </div>
       </div>
       {%endfor%}
     </div>
