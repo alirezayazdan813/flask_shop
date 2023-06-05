@@ -4,18 +4,7 @@ from database.database import create_database, get_products, add_product_from_di
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 create_database(app)
-products=[{
- 'name':'Kavir CDI 200',
- 'image_path': 'https://kavirmotor.com/wp-content/uploads/2022/08/CDI-200.jpg',  
- 'price':'150',
 
- },
- {
-  'name':'Kavir 125',
-  'image_path':'https://images.khabaronline.ir/images/2014/11/14-11-30-11555motor.jpg',
-  'price':'100',
-  }
-]
 
 
 users={
@@ -29,7 +18,6 @@ status=0
 def home():       
     global products
     products=get_products()
-    
     if status==0:
         return render_template('products-user.html' , products=products)
     else:

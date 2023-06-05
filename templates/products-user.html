@@ -41,6 +41,7 @@
     <!-- end of left content -->
     <div class="center_content">
       <div class="center_title_bar">Latest Products</div>
+      {%if products%}
       {%for product in products%}
       <div class="prod_box">
         <div class="center_prod_box">
@@ -55,6 +56,7 @@
         </form> </div>
       </div>
       {%endfor%}
+      {%endif%}
     </div>
     <!-- end of center content -->
     <div class="right_content">
@@ -70,9 +72,11 @@
       </div>
       <div class="title_box">What's new</div>
       <div class="border_box">
+        {%if products%}
         <div class="product_title"><a href="#">{{products[-1]['name']}}</a></div>
         <div class="product_img"><a href="#"><img src={{products[-1]['img_link']}} alt="" border="0" style="width: 60%;" /></a></div>
         <div class="prod_price"><span class="reduce">350$</span> <span class="price">{{products[-1]['price']}}$</span></div>
+        {%endif%}
       </div>
     </div>
     <!-- end of right content -->

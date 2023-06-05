@@ -43,6 +43,7 @@
     <!-- end of left content -->
     <div class="center_content">
       <div class="center_title_bar">Latest Products</div>
+      {%if products%}
       {%for product in products%}
       <div class="prod_box">
         <div class="center_prod_box">
@@ -59,6 +60,7 @@
         </div>
       </div>
       {%endfor%}
+      {%endif%}
     </div>
     <!-- end of center content -->
     <div class="right_content">
