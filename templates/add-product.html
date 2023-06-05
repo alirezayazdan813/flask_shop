@@ -76,7 +76,7 @@ close();
       <div class="prod_box_big">
         <div class="center_prod_box_big">
           <div class="contact_form">
-            <form>
+          <form action="{{url_for('product_added')}}" method="post" >
             <div class="form_row">
               <label class="contact"><strong>Name:</strong></label>
               <input type="text" class="contact_input" required placeholder="please enter product name" name="Name" />
@@ -93,7 +93,7 @@ close();
               <label class="contact"><strong>Description file:</strong></label>
               <input type="file" class="contact_input" name="desc_text" accept=".txt" />  
             </div>  
-            <div class="form_row"> <a href="#" class="prod_details">Add product</a> </div>
+            <input type="submit"  value="Add" style="width: fit-content; border-radius:5px; text-align: center; border-width:0.5px ; float:left; margin: 0px 8px ;">
           </form>
           </div>
         </div>

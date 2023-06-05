@@ -69,7 +69,13 @@ def show_detail():
     product_id=request.form['product id']
     product=products[int(product_id)-1]
     return render_template('details-user.html' , product=product)
-
+@app.route('/product added', methods=['POST'])
+def product_added():
+        price=request.form['Price']
+        name=request.form['Name']
+        img_link=request.form['Picture_link']
+        return render_template('add-product.html')
+        
 app.run()
 
 
