@@ -15,7 +15,7 @@ class Product(db.Model):
             'name': self.name,
             'image_path': self.image_path,
             'price': self.price
-        }
+            }
 
 # Define Cart model
 class Cart(db.Model):
@@ -62,6 +62,12 @@ def delete_from_cart(cart_id):
     cart = Cart.query.get(cart_id)
     if cart:
         db.session.delete(cart)
+        db.session.commit()
+
+def delete_product(product_id):
+    product = Product.query.all(product_id)
+    if product:
+        db.session.delete(product)
         db.session.commit()
 
 def edit_quantity(cart_id, quantity):
