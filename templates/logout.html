@@ -91,9 +91,11 @@ close();
       </div>
       <div class="title_box">What's new</div>
       <div class="border_box">
-        <div class="product_title"><a href="#">Kavir CDI 200</a></div>
-        <div class="product_img"><a href="#"><img src="images/p2.jpg" style="width: 60%;height: fit-content;"alt="" border="0" /></a></div>
-        <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
+        {%if products%}
+        <div class="product_title"><a href="#">{{products[-1]['name']}}</a></div>
+        <div class="product_img"><a href="#"><img src={{products[-1]['img_link']}} alt="" border="0" style="width: 60%;" /></a></div>
+        <div class="prod_price"><span class="reduce">350$</span> <span class="price">{{products[-1]['price']}}$</span></div>
+        {%endif%}
       </div>
     </div>
     <!-- end of right content -->
