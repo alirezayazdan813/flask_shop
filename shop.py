@@ -1,5 +1,5 @@
 from flask import Flask,request,render_template
-from database.database import create_database, get_products, add_product_from_dict, add_to_cart_from_dict, delete_from_cart, edit_quantity
+from database.database import create_database, get_products, add_product_from_dict, add_to_cart_from_dict, delete_from_cart, edit_quantity,delete_product
 from API.api import usd_dollar_price
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -68,14 +68,25 @@ def product_added():
         price = request.form['Price']
         name = request.form['Name']
         img_link = request.form['Picture_link']
+        
         data = {
         'name': name,
         'image_path': img_link,
-        'price': price}
+        'price': price,
+        'description' : 'desc'
+        }
         
         add_product_from_dict(data)
         
         return render_template('add-product.html')
+
+@app.route('/product deleted!', methods=['POST'])
+def delete():
+    if status:
+        product_id=int(request.form['product id'])
+        delete_product(product_id)
+        products=get_products()
+        return render_template('products-admin.html' , products=products ,usd_dollar_price=usd_dollar_price)
         
 app.run()
 
