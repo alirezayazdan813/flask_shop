@@ -8,13 +8,15 @@ class Product(db.Model):
     name = db.Column(db.String(50), nullable=False)
     image_path = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Float, nullable=False)
+    description = db.Column(db.Text, nullable=True)
 
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
             'image_path': self.image_path,
-            'price': self.price
+            'price': self.price,
+            'description': self.description
             }
 
 # Define Cart model
@@ -42,7 +44,7 @@ def get_cart_dict(cart):
     return cart.to_dict() if cart else None
 
 def add_product_from_dict(data):
-    product = Product(name=data['name'], image_path=data['image_path'], price=data['price'])
+    product = Product(name=data['name'], image_path=data['image_path'], price=data['price'], description=data['description'])
     db.session.add(product)
     db.session.commit()
     return get_product_dict(product)
