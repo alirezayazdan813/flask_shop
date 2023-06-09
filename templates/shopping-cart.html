@@ -3,7 +3,7 @@
 <head>
 <title>Motor Shop - Shopping cart - User</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
 <!--[if IE 6]>
 <link rel="stylesheet" type="text/css" href="iecss.css" />
 <![endif]-->
@@ -54,11 +54,11 @@ close();
   <div id="main_content">
     <div id="menu_tab">
       <ul class="menu">
-        <li><a href="#" class="nav"> Products </a></li>
+        <li><a href="{{url_for('home')}}" class="nav"> Products </a></li>
         <li class="divider"></li>
-        <li><a href="#" class="nav"> About us </a></li>
+        <li><a href="{{url_for('about_us')}}" class="nav"> About us </a></li>
         <li class="divider"></li>
-        <li><a href="#" class="nav"> Sign in </a></li>
+        <li><a href="{{url_for('sign_in')}}" class="nav"> Sign in </a></li>
       </ul>
     </div>
     <!-- end of menu tab -->
@@ -78,16 +78,36 @@ close();
       <div class="prod_box_big">
         <div class="center_prod_box_big">
           <div class="details_big_box">
-            <div class="product_title_big">Product1 : price1
-              <button style="float: right; border-radius: 3px; box-shadow: 1px 1px #b5b5b57d; margin: 0 10px 0 10px;">Accept</button>
-              <button style="float: right; border-radius: 3px; box-shadow: 1px 1px #b5b5b57d; margin: 0 10px 0 10px;">Delete</button>
+            
+            {%for i in shop_cart%}
+            <div class="product_title_big">{{i['name']}} : {{i['price']}}
+              <form action="{{url_for('cart')}}" method="post">
+                <input type="hidden" name="id" value="{{i['id']}}" >
+                <input type="hidden" name="price" value="{{i['price']}}" >
+                <input type="hidden" name="name" value="{{i['name']}}" >
               <input type="text" name="amount" style="float: right; width: 20px; text-align: center; margin: 0px 10px 0px 10px; ">
+              <input type="submit" value="Accept" style="float: right; border-radius: 3px; box-shadow: 1px 1px #b5b5b57d; margin: 0 10px 0 10px;"> 
+              </form>
+              <form action="{{url_for('del_cart')}}" method="post">
+              <input type="hidden" name="id" value="{{i['id']}}" >
+              <input type="submit" value="Delete" style="float: right; border-radius: 3px; box-shadow: 1px 1px #b5b5b57d; margin: 0 10px 0 10px;">
+              </form> 
             </div>
-            <div class="product_title_big">Product2 : price2
-              <button style="float: right; border-radius: 3px; box-shadow: 1px 1px #b5b5b57d; margin: 0 10px 0 10px;">Accept</button>       
-              <button style="float: right; border-radius: 3px; box-shadow:1px 1px #b5b5b57d; margin: 0 10px 0 10px;">Delete</button>
-              <input type="text" name="amount" style="float: right; width: 20px; text-align: center; margin: 0px 10px 0px 10px;">
+            {%endfor%}
+            {%for i in shop_cart_accept%}
+
+            <div class="product_title_big">{{i['name']}} : {{i['price']}}
+              <form action="{{url_for('cart')}}" method="post">
+              <input type="text" value="{{i['amount']}}" name="amount" style="float: right; width: 20px; text-align: center; margin: 0px 10px 0px 10px; ">
+            </form>
+            <b>Total : {{i['amount']*i['price']}}</b>
+            <form action="{{url_for('del_cart')}}" method="post">
+              <input type="hidden" name="id" value="{{i['id']}}" >
+              <input type="submit" value="Delete" style="float: right; border-radius: 3px; box-shadow: 1px 1px #b5b5b57d; margin: 0 10px 0 10px;">
+            </form>
             </div>
+            {%endfor%}
+
           </div>
         </div>
       </div>

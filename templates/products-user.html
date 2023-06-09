@@ -46,14 +46,18 @@
       <div class="prod_box">
         <div class="center_prod_box">
           <div class="product_title"><a href="#">{{product['name']}}</a></div>
-          <div class="product_img"><a href="#"><img src={{ product['image_path'] }} alt="" border="0" style="height: 100%" /></a></div>
+          <div class="product_img"><a href="#"><img src="{{ product['image_path'] }}" alt="" border="0" style="height: 100%" /></a></div>
           <div class="prod_price"><span class="reduce">{{usd_dollar_price*product['price']}}</span> <span class="price">{{product['price']}}$</span></div>
         </div>
         <div class="prod_details_tab"><form action="{{ url_for('show_detail') }}" method="post">
-          <input type="hidden"  value={{product['id']}} name="product id" >
           <input type="submit"  value="Details" style="width: fit-content; border-radius:5px; text-align: center; border-width:0.5px ; float:left; margin: 0px 8px ;">
+        </form>
+        <form action="{{ url_for('added_to_cart') }}" method="post">
+          <input type="hidden"  value="{{product['id']}}" name="product id" >
           <input type="submit"  value="Add to Cart" style="width: fit-content; border-radius:5px; text-align: center; border-width:0.5px; float: right; margin:0px 8px; color: green;">
-        </form> </div>
+        </form>
+       </div>
+
       </div>
       {%endfor%}
       {%endif%}
@@ -68,13 +72,13 @@
         <div class="title_box">Shopping cart</div>
         <div class="cart_details"> 3 items <br />
           <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
-        <div class="cart_icon"><a href="#"><img src="{{url_for('static', filename='images/shoppingcart.png')}}" alt="" width="35" height="35" border="0" /></a></div>
+        <div class="cart_icon"><a href="{{url_for('cart')}}"><img src="{{url_for('static', filename='images/shoppingcart.png')}}" alt="" width="35" height="35" border="0" /></a></div>
       </div>
       <div class="title_box">What's new</div>
       <div class="border_box">
         {%if products%}
         <div class="product_title"><a href="#">{{products[-1]['name']}}</a></div>
-        <div class="product_img"><a href="#"><img src={{products[-1]['img_link']}} alt="" border="0" style="width: 60%;" /></a></div>
+        <div class="product_img"><a href="#"><img src="{{ products[-1]['image_path'] }}" alt="" border="0" style="width: 60%;" /></a></div>
         <div class="prod_price"><span class="reduce">350$</span> <span class="price">{{products[-1]['price']}}$</span></div>
         {%endif%}
       </div>

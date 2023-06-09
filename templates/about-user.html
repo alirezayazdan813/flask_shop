@@ -90,13 +90,13 @@ close();
         <div class="title_box">Shopping cart</div>
         <div class="cart_details"> 3 items <br/>
           <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
-        <div class="cart_icon"><a href="#"><img src="{{url_for('static', filename='images/shoppingcart.png')}}" alt="" width="35" height="35" border="0" /></a></div>
+        <div class="cart_icon"><a href="{{url_for('cart')}}"><img src="{{url_for('static', filename='images/shoppingcart.png')}}" alt="" width="35" height="35" border="0" /></a></div>
       </div>
       <div class="title_box">What's new</div>
       <div class="border_box">
         {%if products%}
         <div class="product_title"><a href="#">{{products[-1]['name']}}</a></div>
-        <div class="product_img"><a href="#"><img src={{products[-1]['img_link']}} alt="" border="0" style="width: 60%;" /></a></div>
+        <div class="product_img"><a href="#"><img src="{{ products[-1]['image_path'] }}" alt="" border="0" style="width: 60%;" /></a></div>
         <div class="prod_price"><span class="reduce">350$</span> <span class="price">{{products[-1]['price']}}$</span></div>
         {%endif%}
       </div>

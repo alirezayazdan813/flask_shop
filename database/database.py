@@ -67,7 +67,7 @@ def delete_from_cart(cart_id):
         db.session.commit()
 
 def delete_product(product_id):
-    product = Product.query.all(product_id)
+    product = Product.query.get(product_id)
     if product:
         db.session.delete(product)
         db.session.commit()
